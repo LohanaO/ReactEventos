@@ -22,7 +22,7 @@ const ContactComp = ({contacto, changeState, remove}) => {
 
       <td className='aling-middle'>
         {ConexionIcon()}
-        <i onClick={()=>remove(contacto)} className='bi-trash' style={{color:'black'}}></i>
+        <i onClick={()=>remove(contacto)} className='bi-trash' style={{color:'black', cursor:'pointer'}}></i>
       </td>
       
         </tr>
