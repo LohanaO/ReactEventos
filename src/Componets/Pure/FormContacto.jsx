@@ -1,28 +1,30 @@
 import React, {useRef} from 'react';
 
-const FormContacto = ( {AddContacto} ) => {
-    const name= useRef('');
-    const mail= useRef('');
+const FormContacto = ({ onAddContact }) => {
+  const name = useRef('');
+  const email = useRef('');
 
-    function addContacto(e) {
-        e.preventDefault();
+  function addContact(e) {
+    e.preventDefault();
 
-        const newContacto = {nombre: name.current.value , email: mail.current.value, conectado: true};
-        AddContacto(newContacto);
-        name.current.value='';
-        mail.current.value=''
+    const newContact = { nombre: name.current.value, email: email.current.value, conectado: true };
 
-    }
-    return (
-        <form onSubmit={addContacto} className="contact-component">
-        <h2>Añadir Contacto: </h2>
-        <input ref={name} name="name" placeholder="Nombre contacto" className="form-control mb-2" />
-        <input ref={mail} name="email" type="email" placeholder="Email contacto" />
-        <button onClick={addContacto} type="submit" className="submit-button">
-          Añadir
-        </button>
-      </form>
-    );
-}
+    onAddContact(newContact);
+    name.current.value = '';
+    email.current.value = '';
+  }
+
+  return (
+    <form onSubmit={addContact} className="contact-component">
+      <h2>Añadir Contacto: </h2>
+      <input ref={name} name="name" placeholder="Nombre contacto" className="form-control mb-2" />
+      <input ref={email} name="email" type="email" placeholder="Email contacto" className="form-control mb-2" />
+      <button onClick={addContact} type="submit" className="submit-button">
+        Añadir
+      </button>
+    </form>
+  );
+};
+
 
 export default FormContacto;
